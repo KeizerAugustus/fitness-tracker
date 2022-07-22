@@ -14,6 +14,7 @@
 	<modules>
 		<module>ft-jar</module>
 		<module>ft-ws</module>
+		<module>ft-api</module>
 	</modules>
 	<groupId>nl.fitness-app</groupId>
 	<artifactId>fitness-tracker-backend</artifactId>

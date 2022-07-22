@@ -25,6 +25,11 @@
             <artifactId>ft-ws</artifactId>
             <version>${parent.version}</version>
         </dependency>
+        <dependency>
+            <groupId>nl.fitness-app</groupId>
+            <artifactId>ft-api</artifactId>
+            <version>${parent.version}</version>
+        </dependency>
     </dependencies>
 
 

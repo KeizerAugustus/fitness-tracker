@@ -1,0 +1,29 @@
+openapi: 3.0.3
+info:
+  title: fitness-tracker api
+  description: fitness-tracker api
+  version: 1.0.0
+servers:
+  - url: http:localhost8080/fitnesstracker/api
+paths:
+  /hallowereld:
+    summary: Endpoint voor testdoeleinden
+    get:
+      operationId: geefHalloTerug
+      responses:
+        200:
+          description: Algemene hoi
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HalloWereld'
+
+
+components:
+  schemas:
+    HalloWereld:
+      type: object
+      properties:
+        bericht:
+          type: string
+  
