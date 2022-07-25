@@ -3,53 +3,49 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>nl.fitness-app</groupId>
         <artifactId>fitness-tracker-backend</artifactId>
+        <groupId>nl.fitness-app</groupId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ft-jar</artifactId>
-    <version>${parent.version}</version>
+    <artifactId>ft-springboot</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
-
     <dependencies>
-<!--        alle collega modules-->
-        <dependency>
-            <groupId>nl.fitness-app</groupId>
-            <artifactId>ft-ws</artifactId>
-            <version>${parent.version}</version>
-        </dependency>
         <dependency>
             <groupId>nl.fitness-app</groupId>
             <artifactId>ft-api</artifactId>
             <version>${parent.version}</version>
         </dependency>
+        <dependency>
+            <groupId>nl.fitness-app</groupId>
+            <artifactId>ft-domain</artifactId>
+            <version>${parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>nl.fitness-app</groupId>
+            <artifactId>ft-di</artifactId>
+            <version>${parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>nl.fitness-app</groupId>
+            <artifactId>ft-ws</artifactId>
+            <version>${parent.version}</version>
+        </dependency>
     </dependencies>
-
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>2.7.2</version>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
             </plugin>
         </plugins>
     </build>
-
 
 </project>
