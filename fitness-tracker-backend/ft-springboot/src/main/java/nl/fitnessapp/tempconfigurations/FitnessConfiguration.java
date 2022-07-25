@@ -1,7 +1,7 @@
 package nl.fitnessapp.tempconfigurations;
 
 import nl.fitnessapp.model.Movement;
-import nl.fitnessapp.model.MovementType;
+import nl.fitnessapp.enums.MovementType;
 import nl.fitnessapp.model.SetTemplate;
 import nl.fitnessapp.repositories.MovementRepository;
 import nl.fitnessapp.repositories.SetTemplateRepository;

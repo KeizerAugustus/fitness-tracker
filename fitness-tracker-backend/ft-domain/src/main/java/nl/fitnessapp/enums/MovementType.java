@@ -1,4 +1,4 @@
-package nl.fitnessapp.model;
+package nl.fitnessapp.enums;
 
 public enum MovementType {
 
