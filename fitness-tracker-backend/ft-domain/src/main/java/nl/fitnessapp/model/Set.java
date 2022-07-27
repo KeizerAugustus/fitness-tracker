@@ -19,7 +19,8 @@ public class Set {
     @GeneratedValue
     private Long id;
 
-    private Integer order;
+
+    private Integer orderInWorkout;
 
     @ManyToOne
     private SetTemplate setTemplate;

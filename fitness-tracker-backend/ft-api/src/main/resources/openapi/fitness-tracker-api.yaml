@@ -4,7 +4,7 @@ info:
   description: fitness-tracker api
   version: 1.0.0
 servers:
-  - url: http:localhost8080/fitnesstracker/api
+  - url: http://localhost:8081/fitnesstracker/api/v1
 paths:
   /hallowereld:
     summary: Endpoint voor testdoeleinden

@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>ft-api</artifactId>
-
+    <packaging>jar</packaging>
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -56,7 +56,7 @@
                         <configuration>
 
                             <!-- path to the specification -->
-                            <inputSpec>${basedir}/src/main/resources/fitness-tracker-api.yaml</inputSpec>
+                            <inputSpec>${basedir}/src/main/resources/openapi/fitness-tracker-api.yaml</inputSpec>
 
                             <!--https://openapi-generator.tech/docs/generators/spring -->
                             <generatorName>spring</generatorName>

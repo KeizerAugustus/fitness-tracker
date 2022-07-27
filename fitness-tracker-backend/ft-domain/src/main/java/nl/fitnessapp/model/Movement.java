@@ -25,7 +25,7 @@ public class Movement {
     private String name;
 
     @OneToMany(mappedBy = "movement")
-    private List<Repitition> allRepetitions;
+    private List<Repetition> allRepetitions;
 
     @Override
     public boolean equals(Object o) {
