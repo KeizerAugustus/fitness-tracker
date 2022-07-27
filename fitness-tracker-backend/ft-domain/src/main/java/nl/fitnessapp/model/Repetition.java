@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table
-public class Repitition {
+public class Repetition {
 
     @Id
     @GeneratedValue

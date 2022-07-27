@@ -20,6 +20,8 @@ public class WorkoutTemplate {
     @GeneratedValue
     private Long id;
 
+    private String templateName;
+
     @OneToMany(mappedBy = "workoutTemplate")
     private List<Set> set;
 
