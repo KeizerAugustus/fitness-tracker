@@ -31,7 +31,6 @@ export class RestService {
     }
 
     this.endpoint = endpointWithParams;
-    console.log(this.endpoint)
   }
 
   doGet<T>(): Observable<T>{
