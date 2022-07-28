@@ -1,5 +1,6 @@
 package nl.fitnessapp.service.services;
 
+import nl.fitnessapp.enums.MuscleGroup;
 import nl.fitnessapp.model.Movement;
 import nl.fitnessapp.model.MovementDto;
 import nl.fitnessapp.repositories.MovementRepository;
@@ -27,11 +28,11 @@ class MovementServiceTest {
     @Test
     void testGetAllMovements() {
         //Given
-        Movement movement1 = new Movement("Squat");
-        Movement movement2 = new Movement("Bench Press");
+        Movement movement1 = new Movement("Squat", MuscleGroup.LEGS);
+        Movement movement2 = new Movement("Bench Press", MuscleGroup.CHEST);
 
-        MovementDto movementDto = new MovementDto().name("Squat");
-        MovementDto movementDto2 = new MovementDto().name("Bench Press");
+        MovementDto movementDto = new MovementDto().name("Squat").muscleGroup("Legs");
+        MovementDto movementDto2 = new MovementDto().name("Bench Press").muscleGroup("Chest");
 
 
         when(movementRepository.findAll()).thenReturn(List.of(movement1, movement2));

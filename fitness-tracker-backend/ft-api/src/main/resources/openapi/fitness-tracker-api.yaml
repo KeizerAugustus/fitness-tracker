@@ -27,4 +27,6 @@ components:
       properties:
         name:
           type: string
+        muscleGroup:
+          type: string
   
