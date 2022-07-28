@@ -17,10 +17,18 @@
         <module>ft-domain</module>
         <module>ft-di</module>
         <module>ft-springboot</module>
+        <module>ft-service</module>
     </modules>
     <groupId>nl.fitness-app</groupId>
     <artifactId>fitness-tracker-backend</artifactId>
     <description>Backend voor het fitness-tracker project</description>
+
+    <properties>
+        <springboot.version>2.7.2</springboot.version>
+        <junit.version>5.8.2</junit.version>
+        <hamcrest.version>2.2</hamcrest.version>
+        <mockito.version>4.5.1</mockito.version>
+    </properties>
 
     <dependencyManagement>
         <dependencies>
@@ -28,8 +36,26 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <type>pom</type>
-                <version>2.7.2</version>
+                <version>${springboot.version}</version>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest</artifactId>
+                <version>${hamcrest.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-bom</artifactId>
+                <version>${mockito.version}</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

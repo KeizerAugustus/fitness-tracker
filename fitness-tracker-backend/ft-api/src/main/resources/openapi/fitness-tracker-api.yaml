@@ -6,24 +6,25 @@ info:
 servers:
   - url: http://localhost:8081/fitnesstracker/api/v1
 paths:
-  /hallowereld:
-    summary: Endpoint voor testdoeleinden
+  /movements:
+    summary: Endpoint for all things regarding movements
     get:
-      operationId: geefHalloTerug
+      operationId: return all movements
       responses:
         200:
-          description: Algemene hoi
+          description: all movements
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/HalloWereld'
-
+                type: array
+                items:
+                  $ref: '#/components/schemas/MovementDto'
 
 components:
   schemas:
-    HalloWereld:
+    MovementDto:
       type: object
       properties:
-        bericht:
+        name:
           type: string
   

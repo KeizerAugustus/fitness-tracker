@@ -15,8 +15,11 @@ public class FitnessConfiguration {
     @Bean
     CommandLineRunner commandLineRunner(MovementRepository movementRepository, SetTemplateRepository setTemplateRepository){
         return args -> {
-            Movement movement = new Movement("BenchPress");
+            Movement movement = new Movement("Bench Press");
             movementRepository.save(movement);
+
+            Movement movement1 = new Movement("Squat");
+            movementRepository.save(movement1);
 
             SetTemplate setTemplate = new SetTemplate(MovementType.TENTENMAX, movement);
             setTemplateRepository.save(setTemplate);
