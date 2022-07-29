@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {MenuItem, PrimeNGConfig} from "primeng/api";
+import {MenuItem, MessageService, PrimeNGConfig} from "primeng/api";
 
 @Component({
   selector: 'app-root',

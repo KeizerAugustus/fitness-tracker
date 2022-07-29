@@ -21,6 +21,6 @@ public interface MovementMapper {
     }
 
     default MuscleGroup map(String e){
-        return Enum.valueOf(MuscleGroup.class, e.toUpperCase());
+        return Enum.valueOf(MuscleGroup.class, e.replace(" ", "").toUpperCase());
     }
 }

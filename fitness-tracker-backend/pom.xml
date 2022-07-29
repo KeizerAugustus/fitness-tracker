@@ -28,6 +28,7 @@
         <junit.version>5.8.2</junit.version>
         <hamcrest.version>2.2</hamcrest.version>
         <mockito.version>4.5.1</mockito.version>
+        <jax-rs.version>2.1.1</jax-rs.version>
     </properties>
 
     <dependencyManagement>
@@ -56,6 +57,11 @@
                 <artifactId>mockito-bom</artifactId>
                 <version>${mockito.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.ws.rs</groupId>
+                <artifactId>javax.ws.rs-api</artifactId>
+                <version>${jax-rs.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

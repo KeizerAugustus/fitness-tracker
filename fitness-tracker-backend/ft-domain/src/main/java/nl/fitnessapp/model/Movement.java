@@ -24,6 +24,9 @@ public class Movement {
     }
 
     @Id
+    @GeneratedValue
+    private Long id;
+
     private String name;
 
     @Enumerated(EnumType.STRING)

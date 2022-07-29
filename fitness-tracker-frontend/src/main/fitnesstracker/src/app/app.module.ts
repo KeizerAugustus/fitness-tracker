@@ -1,16 +1,25 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http'
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http'
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {TabMenuModule} from "primeng/tabmenu";
-import { NavbarComponent } from './view/common/navbar/navbar.component';
-import { DisplayMovementComponent } from './view/movement/display-movement/display-movement.component';
-import { HomeComponent } from './view/common/home/home.component';
+import {NavbarComponent} from './view/common/navbar/navbar.component';
+import {DisplayMovementComponent} from './view/movement/display-movement/display-movement.component';
+import {HomeComponent} from './view/common/home/home.component';
 import {TableModule} from "primeng/table";
 import {CardModule} from "primeng/card";
+import {ToolbarModule} from "primeng/toolbar";
+import {ButtonModule} from "primeng/button";
+import {RippleModule} from "primeng/ripple";
+import {DialogModule} from "primeng/dialog";
+import {InputTextModule} from "primeng/inputtext";
+import {FormsModule} from "@angular/forms";
+import {DropdownModule} from "primeng/dropdown";
+import {ToastModule} from "primeng/toast";
+import {ConfirmDialogModule} from "primeng/confirmdialog";
 
 @NgModule({
   declarations: [
@@ -19,17 +28,27 @@ import {CardModule} from "primeng/card";
     DisplayMovementComponent,
     HomeComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        BrowserModule,
-        BrowserAnimationsModule,
-        TabMenuModule,
-        TableModule,
-        CardModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    TabMenuModule,
+    TableModule,
+    CardModule,
+    ToolbarModule,
+    ButtonModule,
+    RippleModule,
+    DialogModule,
+    InputTextModule,
+    DropdownModule,
+    ToastModule,
+    ConfirmDialogModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

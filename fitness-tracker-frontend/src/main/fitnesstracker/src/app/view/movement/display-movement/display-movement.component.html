@@ -1,16 +1,55 @@
-<p-card style="margin-top: 1px">
+<p-toast></p-toast>
+
+<p-card>
+  <p-toolbar>
+    <ng-template pTemplate="left">
+      <button pButton pRipple label="Nieuwe oefening" icon="pi pi-plus" class="p-button-success mr-2" (click)="newMovement()"></button>
+    </ng-template>
+  </p-toolbar>
   <p-table [value]="movementList">
     <ng-template pTemplate="header">
       <tr>
         <th pSortableColumn="name">Naam <p-sortIcon field="name"></p-sortIcon></th>
         <th pSortableColumn="muscleGroup">Spiergroep <p-sortIcon field="muscleGroup"></p-sortIcon></th>
+        <th>Edit/verwijder</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-movement>
       <tr>
         <td>{{movement.name}}</td>
         <td>{{movement.muscleGroup}}</td>
+        <td>
+          <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editMovement(movement)"></button>
+          <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteMovement(movement)"></button>
+        </td>
       </tr>
     </ng-template>
   </p-table>
 </p-card>
+
+<p-dialog [(visible)]="movementWijzigPopupZichtbaar" [style]="{width: '450px', height: '600px'}" header="Oefening details" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <div class="field">
+      <label for="name">Oefening naam</label>
+      <input type="text" pInputText id="name" [(ngModel)]="movementNew.name" required autofocus>
+      <small class="p-error" *ngIf="submitted && !movementNew.name">Naam is verplicht</small>
+    </div>
+    <div class="field">
+      <label for="muscle">Spiergroep</label>
+      <p-dropdown [(ngModel)]="movementNew.muscleGroup" inputId="muscle" [options]="muscleGroupList" placeholder="Kies er een">
+        <ng-template let-muscle pTemplate="item">
+          <span>{{muscle}}</span>
+        </ng-template>
+      </p-dropdown>
+      <small class="p-error" *ngIf="submitted && !movementNew.muscleGroup">Spiergroep is verplicht</small>
+    </div>
+
+
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="onCancelDialog()"></button>
+    <button pButton pRipple label="Sla op" icon="pi pi-check" class="p-button-text" (click)="saveMovement()"></button>
+  </ng-template>
+</p-dialog>
+
+<p-confirmDialog [style]="{width: '450px'}" acceptLabel="Ja" rejectLabel="Annuleer"></p-confirmDialog>
