@@ -1,15 +1,7 @@
-<div class="grid">
-  <div class="col-1"></div>
-  <div>
-    <p-tabMenu [model]="items"></p-tabMenu>
-  </div>
-  <div class="col-1"></div>
-
-  <div class="grid">
-    <div class="col-1"></div>
-    <div>
-      <router-outlet></router-outlet>
-    </div>
-    <div class="col-1"></div>
+<div class="card">
+  <div class="flex flex-wrap align-items-center justify-content-center card-container">
+    <app-navbar></app-navbar>
+    <div class="col-12"></div>
+    <router-outlet></router-outlet>
   </div>
 </div>

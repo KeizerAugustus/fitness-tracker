@@ -1,5 +1,6 @@
 package nl.fitnessapp.tempconfigurations;
 
+import nl.fitnessapp.enums.MuscleGroup;
 import nl.fitnessapp.model.Movement;
 import nl.fitnessapp.enums.MovementType;
 import nl.fitnessapp.model.SetTemplate;
@@ -15,8 +16,11 @@ public class FitnessConfiguration {
     @Bean
     CommandLineRunner commandLineRunner(MovementRepository movementRepository, SetTemplateRepository setTemplateRepository){
         return args -> {
-            Movement movement = new Movement("BenchPress");
+            Movement movement = new Movement("Bench Press", MuscleGroup.CHEST);
             movementRepository.save(movement);
+
+            Movement movement1 = new Movement("Squat", MuscleGroup.LEGS);
+            movementRepository.save(movement1);
 
             SetTemplate setTemplate = new SetTemplate(MovementType.TENTENMAX, movement);
             setTemplateRepository.save(setTemplate);

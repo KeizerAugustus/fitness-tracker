@@ -3,7 +3,8 @@ package nl.fitnessapp.enums;
 public enum MovementType {
 
     TENTENMAX ("tentenmax"),
-    EIGHTTOTWELVE("eighttotwelve");
+    EIGHTTOTWELVE("eighttotwelve"),
+    OTHER("other");
 
     MovementType(String type){
         this.type = type;

@@ -27,7 +27,7 @@ export class RestService {
     let endpointWithParams = endpoint;
 
     for (let arg of args) {
-      endpoint = endpoint.concat('/' + arg);
+      endpointWithParams = endpointWithParams.concat('/' + arg);
     }
 
     this.endpoint = endpointWithParams;
@@ -35,6 +35,33 @@ export class RestService {
 
   doGet<T>(): Observable<T>{
     return this.http.get(this.endpoint, RestService.HEADER).pipe(
+      map((result: HttpResponse<T> | any) => {
+        return result;
+      }),
+      catchError(err => this.handleError(err))
+    );
+  }
+
+  doPost<T>(body: any): Observable<T>{
+    return this.http.post(this.endpoint, body, RestService.HEADER).pipe(
+      map((result: HttpResponse<T> | any) => {
+        return result;
+      }),
+      catchError(err => this.handleError(err))
+    );
+  }
+
+  doPut<T>(body: any): Observable<T>{
+    return this.http.put(this.endpoint, body, RestService.HEADER).pipe(
+      map((result: HttpResponse<T> | any) => {
+        return result;
+      }),
+      catchError(err => this.handleError(err))
+    );
+  }
+
+  doDelete<T>(): Observable<T>{
+    return this.http.delete(this.endpoint, RestService.HEADER).pipe(
       map((result: HttpResponse<T> | any) => {
         return result;
       }),
