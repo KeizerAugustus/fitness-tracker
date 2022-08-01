@@ -41,10 +41,16 @@ public class FitnessConfiguration {
             setTemplateBicepCurl.setAmountOfTimes(4);
             setTemplateBicepCurl.setOrderOfSet(3);
 
+            SetTemplate setTemplateBpCurl = new SetTemplate(MovementType.OTHER, movement3);
+            setTemplateBicepCurl.setAmountOfTimes(10);
+            setTemplateBicepCurl.setOrderOfSet(3);
+
             WorkoutTemplate workoutTemplate = new WorkoutTemplate();
             workoutTemplate.setTemplateName("Van alles wat");
             workoutTemplate.setSetTemplates(List.of(setTemplateBench, setTemplateSquat, setTemplateBicepCurl));
             workoutTemplateRepository.save(workoutTemplate);
+
+
         };
     }
 }

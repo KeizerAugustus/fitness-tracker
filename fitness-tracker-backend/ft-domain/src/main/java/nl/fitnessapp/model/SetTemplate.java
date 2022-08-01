@@ -32,9 +32,6 @@ public class SetTemplate {
     @OneToOne
     private Movement movement;
 
-    @ManyToOne
-    private WorkoutTemplate workoutTemplate;
-
 
     public SetTemplate(MovementType movementType, Movement movement){
         this.movementType = movementType;

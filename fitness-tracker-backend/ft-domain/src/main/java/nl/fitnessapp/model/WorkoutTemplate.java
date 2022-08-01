@@ -23,5 +23,6 @@ public class WorkoutTemplate {
     private String templateName;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @OrderBy("orderOfSet")
     private List<SetTemplate> setTemplates;
 }
