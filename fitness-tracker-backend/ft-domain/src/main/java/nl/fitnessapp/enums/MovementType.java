@@ -12,7 +12,7 @@ public enum MovementType {
 
     private final String type;
 
-    public String getStringValue() {
+    public String toString() {
         return type;
     }
 }

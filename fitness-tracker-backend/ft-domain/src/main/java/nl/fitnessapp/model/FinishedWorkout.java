@@ -24,9 +24,8 @@ public class FinishedWorkout {
 
     private LocalDate workoutDate;
 
-    @OneToMany(mappedBy = "relevantWorkout")
-    private List<Repetition> finishedReps;
+    private String title;
 
-    @ManyToOne
-    private WorkoutTemplate workoutTemplate;
+    @OneToMany(mappedBy = "relevantWorkout")
+    private List<Set> finishedReps;
 }

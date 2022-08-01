@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -19,12 +20,15 @@ public class Set {
     @GeneratedValue
     private Long id;
 
-
-    private Integer orderInWorkout;
+    @ManyToOne
+    private Movement movement;
 
     @ManyToOne
-    private SetTemplate setTemplate;
+    private FinishedWorkout relevantWorkout;
 
-    @ManyToOne
-    private WorkoutTemplate workoutTemplate;
+    private Integer reps;
+
+    private Double weight;
+
+    private LocalDateTime timestamp;
 }

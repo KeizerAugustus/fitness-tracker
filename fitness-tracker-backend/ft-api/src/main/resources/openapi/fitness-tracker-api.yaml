@@ -85,10 +85,62 @@ paths:
                 type: array
                 items:
                   type: string
+  /workouttemplates:
+    summary: endpoint for everthing workouttemplate related
+    get:
+      operationId: return all workouttemplates
+      responses:
+        200:
+          description: all workouttemplates
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WorkoutTemplateDto'
+
+
+  /workouttemplates/workouttypes:
+    summary: Get all the possible muscle groups
+    get:
+      operationId: return all workouttypes
+      responses:
+        200:
+          description: all workouttypes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
 
 
 components:
   schemas:
+    WorkoutTemplateDto:
+      type: object
+      properties:
+        id:
+          type: integer
+        templateName:
+          type: string
+        setTemplates:
+          type: array
+          items:
+            $ref: '#/components/schemas/SetTemplateDto'
+    SetTemplateDto:
+      type: object
+      properties:
+        id:
+          type: integer
+        movementType:
+          type: string
+        amountOfTimes:
+          type: integer
+        orderOfSet:
+          type: integer
+        movement:
+          $ref: '#/components/schemas/MovementDto'
     MovementDto:
       type: object
       properties:
@@ -98,4 +150,3 @@ components:
           type: string
         muscleGroup:
           type: string
-  

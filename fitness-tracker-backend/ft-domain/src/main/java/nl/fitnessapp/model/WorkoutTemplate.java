@@ -22,9 +22,6 @@ public class WorkoutTemplate {
 
     private String templateName;
 
-    @OneToMany(mappedBy = "workoutTemplate")
-    private List<Set> set;
-
-    @OneToMany(mappedBy = "workoutTemplate")
-    private List<FinishedWorkout> finishedWorkouts;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<SetTemplate> setTemplates;
 }

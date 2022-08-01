@@ -25,11 +25,16 @@ public class SetTemplate {
     @Enumerated(EnumType.STRING)
     private MovementType movementType;
 
+    private Integer amountOfTimes;
+
+    private Integer orderOfSet;
+
     @OneToOne
     private Movement movement;
 
-    @OneToMany(mappedBy = "setTemplate")
-    private List<Set> occurenceList;
+    @ManyToOne
+    private WorkoutTemplate workoutTemplate;
+
 
     public SetTemplate(MovementType movementType, Movement movement){
         this.movementType = movementType;

@@ -33,7 +33,7 @@ public class Movement {
     private MuscleGroup muscleGroup;
 
     @OneToMany(mappedBy = "movement")
-    private List<Repetition> allRepetitions;
+    private List<Set> allRepetitions;
 
     @Override
     public boolean equals(Object o) {
