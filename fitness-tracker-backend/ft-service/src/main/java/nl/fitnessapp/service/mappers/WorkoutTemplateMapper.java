@@ -12,6 +12,7 @@ public interface WorkoutTemplateMapper {
     WorkoutTemplateMapper INSTANCE = Mappers.getMapper(WorkoutTemplateMapper.class);
 
     WorkoutTemplateDto workoutTemplateToWorkoutTemplateDto(WorkoutTemplate workoutTemplate);
+    WorkoutTemplate workoutTemplateDtoToWorkoutTemplate(WorkoutTemplateDto workoutTemplate);
 
     default String map(Enum<MovementType> e) {
         return e.toString();

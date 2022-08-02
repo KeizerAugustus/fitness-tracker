@@ -17,4 +17,8 @@ export class WorkoutTemplateComponent implements OnInit {
     this.templateService.getAllTemplates().subscribe(templates => this.templates = templates);
   }
 
+  newTemplateAdded(){
+    this.ngOnInit();
+  }
+
 }

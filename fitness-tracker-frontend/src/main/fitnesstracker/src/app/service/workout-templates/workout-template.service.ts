@@ -15,4 +15,14 @@ export class WorkoutTemplateService {
     this.rest.setEndpoint(Endpoints.workouttemplates);
     return this.rest.doGet<WorkoutTemplateDto[]>();
   }
+
+  getAllStrategies(): Observable<string[]>{
+    this.rest.setEndpoint(Endpoints.workouttypes);
+    return this.rest.doGet<string[]>();
+  }
+
+  addTemplate(template: WorkoutTemplateDto){
+    this.rest.setEndpoint(Endpoints.workouttemplates);
+    return this.rest.doPost(template);
+  }
 }

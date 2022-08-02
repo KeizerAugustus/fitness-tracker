@@ -27,4 +27,10 @@ public class WorkoutTemplateController implements WorkouttemplatesApi {
     public ResponseEntity<List<String>> returnAllWorkouttypes() {
         return ResponseEntity.ok(workoutTemplateService.getMovementTypes());
     }
+
+    @Override
+    public ResponseEntity<Void> addAWorkouttemplate(WorkoutTemplateDto workoutTemplateDto) {
+        workoutTemplateService.addWorkoutTemplate(workoutTemplateDto);
+        return ResponseEntity.ok().build();
+    }
 }

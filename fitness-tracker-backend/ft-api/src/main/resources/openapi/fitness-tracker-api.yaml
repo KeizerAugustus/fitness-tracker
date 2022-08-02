@@ -98,6 +98,23 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/WorkoutTemplateDto'
+    post:
+      operationId: add a workouttemplate
+      requestBody:
+        description: The workouttemplate to add
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkoutTemplateDto'
+      responses:
+        200:
+          description: Saving worked!
+        400:
+          description: Saving failed
+          content:
+            application/json:
+              schema:
+                type: string
 
 
   /workouttemplates/workouttypes:

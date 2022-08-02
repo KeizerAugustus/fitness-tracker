@@ -23,6 +23,10 @@ import {ConfirmDialogModule} from "primeng/confirmdialog";
 import { DisplayTemplatesComponent } from './view/workout-template/display-templates/display-templates.component';
 import { WorkoutTemplateComponent } from './view/workout-template/workout-template.component';
 import {SplitButtonModule} from "primeng/splitbutton";
+import { CreateTemplateComponent } from './view/workout-template/create-template/create-template.component';
+import {OrderListModule} from "primeng/orderlist";
+import {InputNumberModule} from "primeng/inputnumber";
+import {MessageService} from "primeng/api";
 
 @NgModule({
   declarations: [
@@ -31,29 +35,32 @@ import {SplitButtonModule} from "primeng/splitbutton";
     DisplayMovementComponent,
     HomeComponent,
     DisplayTemplatesComponent,
-    WorkoutTemplateComponent
+    WorkoutTemplateComponent,
+    CreateTemplateComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        HttpClientModule,
-        FormsModule,
-        BrowserModule,
-        BrowserAnimationsModule,
-        TabMenuModule,
-        TableModule,
-        CardModule,
-        ToolbarModule,
-        ButtonModule,
-        RippleModule,
-        DialogModule,
-        InputTextModule,
-        DropdownModule,
-        ToastModule,
-        ConfirmDialogModule,
-        SplitButtonModule
-    ],
-  providers: [],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    TabMenuModule,
+    TableModule,
+    CardModule,
+    ToolbarModule,
+    ButtonModule,
+    RippleModule,
+    DialogModule,
+    InputTextModule,
+    DropdownModule,
+    ToastModule,
+    ConfirmDialogModule,
+    SplitButtonModule,
+    OrderListModule,
+    InputNumberModule
+  ],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

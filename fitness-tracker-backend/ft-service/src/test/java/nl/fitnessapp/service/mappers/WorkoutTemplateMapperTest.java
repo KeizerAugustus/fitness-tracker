@@ -56,6 +56,14 @@ public class WorkoutTemplateMapperTest {
 
         //Then
         assertThat(result, is(equalTo(workoutTemplateDto)));
+    }
 
+    @Test
+    void dtoToDomain(){
+        //When
+        WorkoutTemplate result = WorkoutTemplateMapper.INSTANCE.workoutTemplateDtoToWorkoutTemplate(workoutTemplateDto);
+
+        //Then
+        assertThat(result.getSetTemplates().size(), is(equalTo(3)));
     }
 }

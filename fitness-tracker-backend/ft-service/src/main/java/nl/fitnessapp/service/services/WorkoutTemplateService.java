@@ -32,4 +32,8 @@ public class WorkoutTemplateService {
     public List<String> getMovementTypes() {
         return Arrays.stream(MovementType.values()).map(MovementType::toString).collect(Collectors.toList());
     }
+
+    public void addWorkoutTemplate(WorkoutTemplateDto workoutTemplateDto){
+        workoutTemplateRepository.save(WorkoutTemplateMapper.INSTANCE.workoutTemplateDtoToWorkoutTemplate(workoutTemplateDto));
+    }
 }
