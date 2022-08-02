@@ -1,0 +1,29 @@
+<p-card [style]="{'width':'450px'}">
+  <p-toolbar>
+    <ng-template pTemplate="left"><b>{{template.templateName}}</b></ng-template>
+    <ng-template pTemplate="right">
+      <p-splitButton label="Gebruik template" [model]="items"
+                     styleClass="p-button-raised p-button-success mr-2 mb-2"></p-splitButton>
+    </ng-template>
+  </p-toolbar>
+
+  <p-table [value]="template.setTemplates">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Oefening</th>
+        <th>Spiergroep</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-set>
+     <tr>
+       <td>{{set.amountOfTimes}} X  {{set.movement.name}}</td>
+       <td>{{set.movement.muscleGroup}}</td>
+     </tr>
+    </ng-template>
+  </p-table>
+
+
+</p-card>
+
+
+

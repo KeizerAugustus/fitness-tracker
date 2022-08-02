@@ -50,6 +50,10 @@ public class FitnessConfiguration {
             workoutTemplate.setSetTemplates(List.of(setTemplateBench, setTemplateSquat, setTemplateBicepCurl));
             workoutTemplateRepository.save(workoutTemplate);
 
+            WorkoutTemplate workoutTemplate2 = new WorkoutTemplate();
+            workoutTemplate2.setTemplateName("Nummer 2");
+            workoutTemplate2.setSetTemplates(List.of(setTemplateBpCurl));
+            workoutTemplateRepository.save(workoutTemplate2);
 
         };
     }

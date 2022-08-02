@@ -20,33 +20,39 @@ import {FormsModule} from "@angular/forms";
 import {DropdownModule} from "primeng/dropdown";
 import {ToastModule} from "primeng/toast";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
+import { DisplayTemplatesComponent } from './view/workout-template/display-templates/display-templates.component';
+import { WorkoutTemplateComponent } from './view/workout-template/workout-template.component';
+import {SplitButtonModule} from "primeng/splitbutton";
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     DisplayMovementComponent,
-    HomeComponent
+    HomeComponent,
+    DisplayTemplatesComponent,
+    WorkoutTemplateComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    FormsModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    TabMenuModule,
-    TableModule,
-    CardModule,
-    ToolbarModule,
-    ButtonModule,
-    RippleModule,
-    DialogModule,
-    InputTextModule,
-    DropdownModule,
-    ToastModule,
-    ConfirmDialogModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        TabMenuModule,
+        TableModule,
+        CardModule,
+        ToolbarModule,
+        ButtonModule,
+        RippleModule,
+        DialogModule,
+        InputTextModule,
+        DropdownModule,
+        ToastModule,
+        ConfirmDialogModule,
+        SplitButtonModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
