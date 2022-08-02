@@ -25,4 +25,14 @@ export class WorkoutTemplateService {
     this.rest.setEndpoint(Endpoints.workouttemplates);
     return this.rest.doPost(template);
   }
+
+  changeTemplate(template: WorkoutTemplateDto){
+    this.rest.setEndpoint(Endpoints.workouttemplates);
+    return this.rest.doPut(template);
+  }
+
+  deletetemplate(template: WorkoutTemplateDto){
+    this.rest.setEndpoint(Endpoints.workouttemplates, String(template.id));
+    return this.rest.doDelete();
+  }
 }

@@ -26,7 +26,7 @@ import {SplitButtonModule} from "primeng/splitbutton";
 import { CreateTemplateComponent } from './view/workout-template/create-template/create-template.component';
 import {OrderListModule} from "primeng/orderlist";
 import {InputNumberModule} from "primeng/inputnumber";
-import {MessageService} from "primeng/api";
+import {ConfirmationService, MessageService} from "primeng/api";
 
 @NgModule({
   declarations: [
@@ -60,7 +60,7 @@ import {MessageService} from "primeng/api";
     OrderListModule,
     InputNumberModule
   ],
-  providers: [MessageService],
+  providers: [MessageService, ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

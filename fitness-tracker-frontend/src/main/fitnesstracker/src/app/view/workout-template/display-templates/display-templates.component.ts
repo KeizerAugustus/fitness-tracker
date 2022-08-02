@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {WorkoutTemplateDto} from "../../../../../../../../target/generated-sources/openapi/model/workoutTemplateDto";
-import {MenuItem} from "primeng/api";
+import {ConfirmationService, MenuItem, MessageService} from "primeng/api";
+import {WorkoutTemplateService} from "../../../service/workout-templates/workout-template.service";
 
 @Component({
   selector: 'app-display-templates',
@@ -10,20 +11,47 @@ import {MenuItem} from "primeng/api";
 export class DisplayTemplatesComponent {
 
   @Input() template: WorkoutTemplateDto;
+  @Output("wijzigTemplate") wijzigEvent = new EventEmitter<WorkoutTemplateDto>();
 
   items: MenuItem[] = [
     {label: 'Wijzig', icon: 'pi pi-pencil', command: () => {this.wijzigTemplate()}},
     {label: 'Verwijder', icon: 'pi pi-file-excel', command: () => {this.verwijderTemplate()}}
   ];
 
-  constructor() { }
+  constructor(private confirmationService: ConfirmationService, private templateService: WorkoutTemplateService, private messageService: MessageService) { }
 
   wijzigTemplate(){
-    console.log('wijzig training');
+    this.wijzigEvent.emit(this.template);
   }
 
   verwijderTemplate(){
-    console.log('verwijder training');
+    this.confirmationService.confirm({
+      message: 'Weet je zeker dat je ' + this.template.templateName + ' wilt verwijderen?',
+      header: 'Bevestig',
+      icon: 'pi pi-exclamation-triangle',
+      accept: () => {
+        this.templateService.deletetemplate(this.template).subscribe({
+          complete: () => {
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Succes',
+              detail: 'Template verwijderd!',
+              life: 3000
+            });
+            this.confirmationService.close();
+          },
+          error: err => {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Fail',
+              detail: 'Template verwijderen niet gelukt..',
+              life: 3000
+            });
+          }
+        })
+
+      }
+    });
   }
 
 }

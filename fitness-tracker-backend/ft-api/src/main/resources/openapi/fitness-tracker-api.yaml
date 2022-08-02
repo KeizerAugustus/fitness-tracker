@@ -115,6 +115,42 @@ paths:
             application/json:
               schema:
                 type: string
+    put:
+      operationId: change a workouttemplate
+      requestBody:
+        description: The workouttemplate to change
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkoutTemplateDto'
+      responses:
+        200:
+          description: Changing worked!
+        400:
+          description: Changing failed
+          content:
+            application/json:
+              schema:
+                type: string
+  /workouttemplates/{templateId}:
+    delete:
+      operationId: deleting a template
+      parameters:
+        - in: path
+          name: templateId
+          required: true
+          description: id of template
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Deleting worked!
+        400:
+          description: Deleting failed
+          content:
+            application/json:
+              schema:
+                type: string
 
 
   /workouttemplates/workouttypes:

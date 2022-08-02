@@ -33,6 +33,7 @@ public class SetTemplate {
     private Movement movement;
 
 
+
     public SetTemplate(MovementType movementType, Movement movement){
         this.movementType = movementType;
         this.movement = movement;

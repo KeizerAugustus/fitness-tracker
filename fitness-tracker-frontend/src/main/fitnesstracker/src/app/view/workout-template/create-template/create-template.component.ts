@@ -47,6 +47,7 @@ export class CreateTemplateComponent implements OnInit {
     for (let i = 0; i < this.templateNew.setTemplates.length; i++) {
       this.templateNew.setTemplates[i].orderOfSet = i + 1;
     }
+    if (!this.templateNew.id){
     this.templateService.addTemplate(this.templateNew).subscribe({
         next: () => {
           this.newTempEvent.emit();
@@ -57,9 +58,20 @@ export class CreateTemplateComponent implements OnInit {
             detail: 'Template toegevoegd!!',
             life: 3000
           });
-        }
-      }
-    )
+        }})}
+    else {
+      this.templateService.changeTemplate(this.templateNew).subscribe({
+        next: () => {
+          this.newTempEvent.emit();
+          this.newMovementChecked = false;
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Succes',
+            detail: 'Template gewijzigd!!',
+            life: 3000
+          });
+        }})
+    }
   }
 
   addSet() {
