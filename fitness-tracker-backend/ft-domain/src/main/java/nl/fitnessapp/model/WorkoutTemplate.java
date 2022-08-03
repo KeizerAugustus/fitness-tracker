@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,9 +23,7 @@ public class WorkoutTemplate {
 
     private String templateName;
 
-    @OneToMany(mappedBy = "workoutTemplate")
-    private List<Set> set;
-
-    @OneToMany(mappedBy = "workoutTemplate")
-    private List<FinishedWorkout> finishedWorkouts;
+    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
+    @OrderBy("orderOfSet")
+    private List<SetTemplate> setTemplates = new ArrayList<>();
 }

@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {MovementDto} from "../../../../../../../../target/generated-sources/openapi/model/movementDto";
 import {MovementService} from "../../../service/movements/movement.service";
 import {ConfirmationService, MessageService} from "primeng/api";
-import {error} from "@angular/compiler-cli/src/transformers/util";
 
 @Component({
   selector: 'app-display-movement',
@@ -49,24 +48,28 @@ export class DisplayMovementComponent implements OnInit {
               detail: 'Oefening toegevoegd!',
               life: 3000
             });
-            this.ngOnInit();}})
+            this.ngOnInit();
+          }
+        })
       } else {
-          this.movementService.changeMovement(this.movementNew).subscribe({
-            error: err => this.messageService.add({severity: 'error', detail: "Wijzigen mislukt..", life: 3000}),
-            complete: () => {
-              this.movementWijzigPopupZichtbaar = false;
-              this.messageService.add({
-                severity: 'success',
-                summary: 'Succes',
-                detail: 'Oefening gewijzigd!',
-                life: 3000
-              });
-              this.ngOnInit();}})
+        this.movementService.changeMovement(this.movementNew).subscribe({
+          error: err => this.messageService.add({severity: 'error', detail: "Wijzigen mislukt..", life: 3000}),
+          complete: () => {
+            this.movementWijzigPopupZichtbaar = false;
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Succes',
+              detail: 'Oefening gewijzigd!',
+              life: 3000
+            });
+            this.ngOnInit();
+          }
+        })
       }
     }
   }
 
-  onCancelDialog(){
+  onCancelDialog() {
     this.movementWijzigPopupZichtbaar = false;
   }
 
@@ -83,10 +86,22 @@ export class DisplayMovementComponent implements OnInit {
       accept: () => {
         this.movementService.deleteMovement(movement).subscribe({
           complete: () => {
-            this.messageService.add({severity:'success', summary: 'Succes', detail: 'Oefening verwijderd!', life: 3000});
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Succes',
+              detail: 'Oefening verwijderd!',
+              life: 3000
+            });
             this.ngOnInit();
           },
-          error: err => {this.messageService.add({severity:'error', summary: 'Fail', detail: 'Oefening wordt gebruikt voor een template, kan niet verwijderd worden!', life: 3000});}
+          error: err => {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Fail',
+              detail: 'Oefening wordt gebruikt voor een template, kan niet verwijderd worden!',
+              life: 3000
+            });
+          }
         })
 
       }

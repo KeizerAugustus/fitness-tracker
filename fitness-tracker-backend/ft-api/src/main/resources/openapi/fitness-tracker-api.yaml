@@ -85,10 +85,115 @@ paths:
                 type: array
                 items:
                   type: string
+  /workouttemplates:
+    summary: endpoint for everthing workouttemplate related
+    get:
+      operationId: return all workouttemplates
+      responses:
+        200:
+          description: all workouttemplates
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WorkoutTemplateDto'
+    post:
+      operationId: add a workouttemplate
+      requestBody:
+        description: The workouttemplate to add
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkoutTemplateDto'
+      responses:
+        200:
+          description: Saving worked!
+        400:
+          description: Saving failed
+          content:
+            application/json:
+              schema:
+                type: string
+    put:
+      operationId: change a workouttemplate
+      requestBody:
+        description: The workouttemplate to change
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WorkoutTemplateDto'
+      responses:
+        200:
+          description: Changing worked!
+        400:
+          description: Changing failed
+          content:
+            application/json:
+              schema:
+                type: string
+  /workouttemplates/{templateId}:
+    delete:
+      operationId: deleting a template
+      parameters:
+        - in: path
+          name: templateId
+          required: true
+          description: id of template
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Deleting worked!
+        400:
+          description: Deleting failed
+          content:
+            application/json:
+              schema:
+                type: string
+
+
+  /workouttemplates/workouttypes:
+    summary: Get all the possible muscle groups
+    get:
+      operationId: return all workouttypes
+      responses:
+        200:
+          description: all workouttypes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
 
 
 components:
   schemas:
+    WorkoutTemplateDto:
+      type: object
+      properties:
+        id:
+          type: integer
+        templateName:
+          type: string
+        setTemplates:
+          type: array
+          items:
+            $ref: '#/components/schemas/SetTemplateDto'
+    SetTemplateDto:
+      type: object
+      properties:
+        id:
+          type: integer
+        movementType:
+          type: string
+        amountOfTimes:
+          type: integer
+        orderOfSet:
+          type: integer
+        movement:
+          $ref: '#/components/schemas/MovementDto'
     MovementDto:
       type: object
       properties:
@@ -98,4 +203,3 @@ components:
           type: string
         muscleGroup:
           type: string
-  

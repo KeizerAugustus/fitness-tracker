@@ -1,0 +1,14 @@
+<p-toast></p-toast>
+
+<div class="grid">
+<div class="col-4 col-offset-5">
+  <app-create-template (newTemplate)="newTemplateAdded()"></app-create-template>
+</div>
+</div>
+<div class="grid">
+  <div class="col" *ngFor="let template of templates">
+    <app-display-templates [template]=template (wijzigTemplate)="wijzigTemplate($event)"></app-display-templates>
+  </div>
+</div>
+
+

@@ -20,13 +20,23 @@ import {FormsModule} from "@angular/forms";
 import {DropdownModule} from "primeng/dropdown";
 import {ToastModule} from "primeng/toast";
 import {ConfirmDialogModule} from "primeng/confirmdialog";
+import { DisplayTemplatesComponent } from './view/workout-template/display-templates/display-templates.component';
+import { WorkoutTemplateComponent } from './view/workout-template/workout-template.component';
+import {SplitButtonModule} from "primeng/splitbutton";
+import { CreateTemplateComponent } from './view/workout-template/create-template/create-template.component';
+import {OrderListModule} from "primeng/orderlist";
+import {InputNumberModule} from "primeng/inputnumber";
+import {ConfirmationService, MessageService} from "primeng/api";
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     DisplayMovementComponent,
-    HomeComponent
+    HomeComponent,
+    DisplayTemplatesComponent,
+    WorkoutTemplateComponent,
+    CreateTemplateComponent
   ],
   imports: [
     BrowserModule,
@@ -45,9 +55,12 @@ import {ConfirmDialogModule} from "primeng/confirmdialog";
     InputTextModule,
     DropdownModule,
     ToastModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    SplitButtonModule,
+    OrderListModule,
+    InputNumberModule
   ],
-  providers: [],
+  providers: [MessageService, ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

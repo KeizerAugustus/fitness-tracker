@@ -49,13 +49,15 @@ public class MovementService {
     }
 
     @Transactional
-    public void changeMovement(MovementDto movementDto) {
+    public Movement changeMovement(MovementDto movementDto) {
         Movement movement = movementRepository.findById(movementDto.getId().longValue())
                 .orElseThrow(() -> new IllegalStateException("Movement should be found.."));
 
         Movement movementUpdated = MovementMapper.INSTANCE.movementDtoToMovement(movementDto);
         movement.setName(movementUpdated.getName());
         movement.setMuscleGroup(movementUpdated.getMuscleGroup());
+
+        return movement;
     }
 
 }
