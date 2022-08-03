@@ -18,7 +18,7 @@ import java.util.List;
 public class FitnessConfiguration {
 
     @Bean
-    CommandLineRunner commandLineRunner(MovementRepository movementRepository, WorkoutTemplateRepository workoutTemplateRepository){
+    CommandLineRunner commandLineRunner(MovementRepository movementRepository, WorkoutTemplateRepository workoutTemplateRepository, SetTemplateRepository setTemplateRepository){
         return args -> {
             Movement movement = new Movement("Bench Press", MuscleGroup.CHEST);
             movementRepository.save(movement);
@@ -32,18 +32,23 @@ public class FitnessConfiguration {
             SetTemplate setTemplateBench = new SetTemplate(MovementType.TENTENMAX, movement);
             setTemplateBench.setAmountOfTimes(3);
             setTemplateBench.setOrderOfSet(2);
+            setTemplateRepository.save(setTemplateBench);
+
 
             SetTemplate setTemplateSquat = new SetTemplate(MovementType.EIGHTTOTWELVE, movement1);
             setTemplateSquat.setAmountOfTimes(3);
             setTemplateSquat.setOrderOfSet(1);
+            setTemplateRepository.save(setTemplateSquat);
 
             SetTemplate setTemplateBicepCurl = new SetTemplate(MovementType.OTHER, movement3);
             setTemplateBicepCurl.setAmountOfTimes(4);
             setTemplateBicepCurl.setOrderOfSet(3);
+            setTemplateRepository.save(setTemplateBicepCurl);
 
             SetTemplate setTemplateBpCurl = new SetTemplate(MovementType.OTHER, movement3);
             setTemplateBicepCurl.setAmountOfTimes(10);
             setTemplateBicepCurl.setOrderOfSet(3);
+            setTemplateRepository.save(setTemplateBpCurl);
 
             WorkoutTemplate workoutTemplate = new WorkoutTemplate();
             workoutTemplate.setTemplateName("Van alles wat");

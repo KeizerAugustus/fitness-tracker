@@ -17,7 +17,7 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-set>
-     <tr>
+     <tr *ngIf="set.movement">
        <td>{{set.amountOfTimes}} X  {{set.movement.name}}</td>
        <td>{{set.movement.muscleGroup}}</td>
      </tr>

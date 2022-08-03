@@ -1,8 +1,10 @@
 package nl.fitnessapp.service.services;
 
 import nl.fitnessapp.enums.MovementType;
+import nl.fitnessapp.model.SetTemplate;
 import nl.fitnessapp.model.WorkoutTemplate;
 import nl.fitnessapp.model.WorkoutTemplateDto;
+import nl.fitnessapp.repositories.SetTemplateRepository;
 import nl.fitnessapp.repositories.WorkoutTemplateRepository;
 import nl.fitnessapp.service.mappers.WorkoutTemplateMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +19,12 @@ import java.util.stream.Collectors;
 public class WorkoutTemplateService {
 
     private WorkoutTemplateRepository workoutTemplateRepository;
+    private SetTemplateRepository setTemplateRepository;
 
     @Autowired
-    public WorkoutTemplateService(WorkoutTemplateRepository workoutTemplateRepository) {
+    public WorkoutTemplateService(WorkoutTemplateRepository workoutTemplateRepository, SetTemplateRepository setTemplateRepository) {
         this.workoutTemplateRepository = workoutTemplateRepository;
+        this.setTemplateRepository = setTemplateRepository;
     }
 
     public List<WorkoutTemplateDto> getAll() {
@@ -37,7 +41,7 @@ public class WorkoutTemplateService {
         workoutTemplateRepository.save(WorkoutTemplateMapper.INSTANCE.workoutTemplateDtoToWorkoutTemplate(workoutTemplateDto));
     }
 
-    public void deleteWorkoutTemplate(Long setTemplateId){
+    public void deleteWorkoutTemplate(Long setTemplateId) {
         workoutTemplateRepository.deleteById(setTemplateId);
     }
 
@@ -46,7 +50,25 @@ public class WorkoutTemplateService {
         WorkoutTemplate workoutTemplateOld = workoutTemplateRepository.getReferenceById((long) workoutTemplateDto.getId());
         WorkoutTemplate workoutTemplateNew = WorkoutTemplateMapper.INSTANCE.workoutTemplateDtoToWorkoutTemplate(workoutTemplateDto);
 
-        workoutTemplateOld.setSetTemplates(workoutTemplateNew.getSetTemplates());
+        List<SetTemplate> notChangedList = workoutTemplateNew.getSetTemplates().stream()
+                .filter(setTemplate -> workoutTemplateOld.getSetTemplates().contains(setTemplate)).toList();
+        List<SetTemplate> removedList = workoutTemplateOld.getSetTemplates().stream()
+                .filter(setTemplate ->
+                        !workoutTemplateNew.getSetTemplates().stream().map(SetTemplate::getId).toList().contains(setTemplate.getId()))
+                .toList();
+
+        workoutTemplateOld.getSetTemplates().removeAll(removedList);
+        workoutTemplateNew.getSetTemplates().removeAll(notChangedList);
+        workoutTemplateNew.getSetTemplates().forEach(setTemplate -> {
+            if (setTemplate.getId() == null) {
+                setTemplateRepository.save(setTemplate);
+                workoutTemplateOld.getSetTemplates().add(setTemplate);
+            } else {
+                SetTemplate setTemplateOld = setTemplateRepository.getReferenceById(setTemplate.getId());
+                setTemplateOld.copyAttributes(setTemplate);
+            }
+        });
+
         workoutTemplateOld.setTemplateName(workoutTemplateNew.getTemplateName());
     }
 }

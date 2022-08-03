@@ -22,7 +22,7 @@ public class WorkoutTemplate {
 
     private String templateName;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
     @OrderBy("orderOfSet")
     private List<SetTemplate> setTemplates;
 }
