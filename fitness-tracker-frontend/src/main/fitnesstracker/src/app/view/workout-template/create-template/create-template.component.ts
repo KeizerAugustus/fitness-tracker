@@ -4,6 +4,7 @@ import {MovementService} from "../../../service/movements/movement.service";
 import {WorkoutTemplateDto} from "../../../../../../../../target/generated-sources/openapi/model/workoutTemplateDto";
 import {WorkoutTemplateService} from "../../../service/workout-templates/workout-template.service";
 import {MessageService} from "primeng/api";
+import {SetTemplateDto} from "../../../../../../../../target/generated-sources/openapi/model/setTemplateDto";
 
 @Component({
   selector: 'app-create-template',
@@ -78,8 +79,8 @@ export class CreateTemplateComponent implements OnInit {
     this.templateNew.setTemplates.push({});
   }
 
-  removeSet() {
-    this.templateNew.setTemplates.pop();
+  removeSet(index: number) {
+    this.templateNew.setTemplates.splice(index, 1);
   }
 
 }

@@ -18,6 +18,7 @@
             <th *ngFor="let col of columns" pReorderableColumn>
               {{col.header}}
             </th>
+            <th style="width:3rem"></th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-template let-index="rowIndex">
@@ -44,6 +45,8 @@
                 </ng-template>
               </p-dropdown>
             </td>
+            <td><button pButton pRipple icon="pi pi-trash" class="p-button-danger mr-2"
+                        (click)="removeSet(index)"></button></td>
           </tr>
 
         </ng-template>
@@ -51,8 +54,7 @@
       <span class="p-buttonset" [style]="{'margin-bottom': '120px'}">
       <button pButton pRipple label="Nog een oefening" icon="pi pi-plus" class="p-button-success mr-2"
               (click)="addSet()"></button>
-        <button pButton pRipple label="Verwijder laatste oefening" icon="pi pi-trash" class="p-button-danger mr-2"
-                (click)="removeSet()"></button>
+
         </span>
     </div>
 
