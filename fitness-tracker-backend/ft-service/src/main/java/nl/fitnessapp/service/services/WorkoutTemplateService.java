@@ -46,7 +46,7 @@ public class WorkoutTemplateService {
     }
 
     @Transactional
-    public void changeWorkoutTemplate(WorkoutTemplateDto workoutTemplateDto) {
+    public WorkoutTemplate changeWorkoutTemplate(WorkoutTemplateDto workoutTemplateDto) {
         WorkoutTemplate workoutTemplateOld = workoutTemplateRepository.getReferenceById((long) workoutTemplateDto.getId());
         WorkoutTemplate workoutTemplateNew = WorkoutTemplateMapper.INSTANCE.workoutTemplateDtoToWorkoutTemplate(workoutTemplateDto);
 
@@ -70,5 +70,7 @@ public class WorkoutTemplateService {
         });
 
         workoutTemplateOld.setTemplateName(workoutTemplateNew.getTemplateName());
+
+        return workoutTemplateOld;
     }
 }
