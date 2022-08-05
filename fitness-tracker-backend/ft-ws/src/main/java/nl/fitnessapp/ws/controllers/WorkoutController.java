@@ -22,4 +22,21 @@ public class WorkoutController implements WorkoutApi {
     public ResponseEntity<NewWorkoutDto> returnTheNewWorkout(@PathVariable("templateId")Integer templateId) {
        return ResponseEntity.ok(workoutService.generateNewWorkout(templateId));
     }
+
+    @Override
+    public ResponseEntity<Void> finishWorkout() {
+        workoutService.saveFinishedWorkout();
+        return ResponseEntity.ok().build();
+    }
+
+    @Override
+    public ResponseEntity<NewWorkoutDto> getWorkout() {
+        return ResponseEntity.ok(workoutService.getActiveWorkout());
+    }
+
+    @Override
+    public ResponseEntity<Void> savingWorkout(NewWorkoutDto newWorkoutDto) {
+        workoutService.saveActiveWorkout(newWorkoutDto);
+        return ResponseEntity.ok().build();
+    }
 }

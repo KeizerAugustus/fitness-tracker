@@ -185,6 +185,37 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/NewWorkoutDto'
+  /workout/save:
+    summary: Endpoint for locally saving a workout while doing one
+    post:
+      operationId: savingWorkout
+      requestBody:
+        description: The workouttemplate to add
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewWorkoutDto'
+      responses:
+        201:
+          description: Workout saved
+  /workout/retrieve:
+    summary: Return the cached workout (when frontend crashes, for instance)
+    get:
+      operationId: getWorkout
+      responses:
+        200:
+          description: The workout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewWorkoutDto'
+  /workout/finish:
+    summary: Finish workout and save cached workout in database
+    get:
+      operationId: finishWorkout
+      responses:
+        201:
+          description: workout finished and saved in database
 
 
 components:
@@ -194,8 +225,6 @@ components:
       properties:
         name:
           type: string
-        movements:
-          $ref: '#/components/schemas/SetRepMap'
         setInfoList:
           type: array
           items:
@@ -222,6 +251,10 @@ components:
           type: integer
         movement:
           $ref: '#/components/schemas/MovementDto'
+        reps:
+          type: array
+          items:
+            $ref: '#/components/schemas/RepInfoDto'
     RepInfoDto:
       type: object
       properties:
@@ -231,19 +264,6 @@ components:
           type: number
         timestamp:
           type: string
-    SetRepMap:
-      type: object
-      properties:
-        setInfo:
-          type: array
-          items:
-            $ref: '#/components/schemas/SetInfoDto'
-      required:
-        - setInfo
-      additionalProperties:
-        type: array
-        items:
-          $ref: '#/components/schemas/RepInfoDto'
     SetTemplateDto:
       type: object
       properties:
