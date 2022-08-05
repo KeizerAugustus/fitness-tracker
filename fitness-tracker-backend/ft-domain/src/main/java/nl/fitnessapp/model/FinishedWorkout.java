@@ -26,6 +26,6 @@ public class FinishedWorkout {
 
     private String title;
 
-    @OneToMany(mappedBy = "relevantWorkout")
+    @OneToMany(mappedBy = "relevantWorkout", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<Set> finishedReps;
 }

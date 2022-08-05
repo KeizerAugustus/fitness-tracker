@@ -107,7 +107,7 @@ paths:
             schema:
               $ref: '#/components/schemas/WorkoutTemplateDto'
       responses:
-        200:
+        204:
           description: Saving worked!
         400:
           description: Saving failed
@@ -124,7 +124,7 @@ paths:
             schema:
               $ref: '#/components/schemas/WorkoutTemplateDto'
       responses:
-        200:
+        204:
           description: Changing worked!
         400:
           description: Changing failed
@@ -143,7 +143,7 @@ paths:
           schema:
             type: integer
       responses:
-        200:
+        204:
           description: Deleting worked!
         400:
           description: Deleting failed
@@ -167,9 +167,39 @@ paths:
                 items:
                   type: string
 
+  /workout/converttemplate/{templateId}:
+    summary: Convert the workouttemplate to a new workout to be used
+    get:
+      operationId: Return the new workout
+      parameters:
+        - in: path
+          name: templateId
+          required: true
+          description: id of template
+          schema:
+            type: integer
+      responses:
+        201:
+          description: Conversion happened
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewWorkoutDto'
+
 
 components:
   schemas:
+    NewWorkoutDto:
+      type: object
+      properties:
+        name:
+          type: string
+        movements:
+          $ref: '#/components/schemas/SetRepMap'
+        setInfoList:
+          type: array
+          items:
+            $ref: '#/components/schemas/SetInfoDto'
     WorkoutTemplateDto:
       type: object
       properties:
@@ -181,6 +211,39 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/SetTemplateDto'
+    SetInfoDto:
+      type: object
+      properties:
+        movementType:
+          type: string
+        amountOfTimes:
+          type: integer
+        orderOfSet:
+          type: integer
+        movement:
+          $ref: '#/components/schemas/MovementDto'
+    RepInfoDto:
+      type: object
+      properties:
+        reps:
+          type: integer
+        weight:
+          type: number
+        timestamp:
+          type: string
+    SetRepMap:
+      type: object
+      properties:
+        setInfo:
+          type: array
+          items:
+            $ref: '#/components/schemas/SetInfoDto'
+      required:
+        - setInfo
+      additionalProperties:
+        type: array
+        items:
+          $ref: '#/components/schemas/RepInfoDto'
     SetTemplateDto:
       type: object
       properties:
