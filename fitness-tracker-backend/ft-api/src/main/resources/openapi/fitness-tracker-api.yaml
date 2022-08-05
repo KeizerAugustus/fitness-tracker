@@ -197,7 +197,11 @@ paths:
               $ref: '#/components/schemas/NewWorkoutDto'
       responses:
         201:
-          description: Workout saved
+          description: The workout
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewWorkoutDto'
   /workout/retrieve:
     summary: Return the cached workout (when frontend crashes, for instance)
     get:

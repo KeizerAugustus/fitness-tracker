@@ -34,9 +34,10 @@ public class WorkoutService {
         return TemplateToWorkoutMapper.map(workoutTemplateDto);
     }
 
-    public void saveActiveWorkout(NewWorkoutDto newWorkoutDto) {
+    public NewWorkoutDto saveActiveWorkout(NewWorkoutDto newWorkoutDto) {
         addTimestamp(newWorkoutDto);
         WorkoutTempSaver.getInstance().saveWorkout(newWorkoutDto);
+        return newWorkoutDto;
     }
 
     public NewWorkoutDto getActiveWorkout() {

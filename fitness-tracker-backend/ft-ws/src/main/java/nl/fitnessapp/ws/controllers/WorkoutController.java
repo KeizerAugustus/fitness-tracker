@@ -35,8 +35,8 @@ public class WorkoutController implements WorkoutApi {
     }
 
     @Override
-    public ResponseEntity<Void> savingWorkout(NewWorkoutDto newWorkoutDto) {
+    public ResponseEntity<NewWorkoutDto> savingWorkout(NewWorkoutDto newWorkoutDto) {
         workoutService.saveActiveWorkout(newWorkoutDto);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(workoutService.saveActiveWorkout(newWorkoutDto));
     }
 }
