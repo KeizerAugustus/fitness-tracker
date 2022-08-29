@@ -1,0 +1,28 @@
+<p-toast></p-toast>
+
+<p-card [style]="{'width':'700px'}" *ngIf="newWorkout">
+  <p-toolbar>
+    <ng-template pTemplate="left"><b>{{newWorkout.name}}</b></ng-template>
+    <ng-template pTemplate="right">
+      <button pButton type="button" label="Workout klaar" class="p-button-success" (click)="finishWorkout()"></button>
+    </ng-template>
+  </p-toolbar>
+
+  <div class="grid p-fluid" *ngFor="let set of newWorkout.setInfoList">
+    <h5>{{set.movement.name}} ({{set.movementType}})</h5>
+    <div class="col-12" *ngFor="let rep of set.reps; let i = index">
+      <div class="p-inputgroup">
+        <button type="button" pButton pRipple icon="pi pi-check" styleClass="p-button-success" (click)="saveWorkout()"></button>
+        <input type="number" pInputText placeholder="Herhalingen" [(ngModel)]="rep.reps">
+        <span class="p-inputgroup-addon">x</span>
+        <input type="number" pInputText placeholder="Gewicht" [(ngModel)]="rep.weight">
+        <span class="p-inputgroup-addon">kg</span>
+        <button type="button" pButton pRipple icon="pi pi-times" styleClass="p-button-danger" (click)="removeRep(set, i)"></button>
+      </div>
+    </div>
+    <button pButton type="button" label="Voeg herhaling toe" (click)="addRep(set)"></button>
+
+  </div>
+</p-card>
+
+<p-confirmDialog [style]="{width: '450px'}" acceptLabel="Ja" rejectLabel="Annuleer"></p-confirmDialog>

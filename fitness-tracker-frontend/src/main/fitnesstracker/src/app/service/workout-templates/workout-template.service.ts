@@ -3,6 +3,7 @@ import {RestService} from "../rest.service";
 import {Endpoints} from "../../endpoints";
 import {WorkoutTemplateDto} from "../../../../../../../target/generated-sources/openapi/model/workoutTemplateDto";
 import {Observable} from "rxjs";
+import {NewWorkoutDto} from "../../../../../../../target/generated-sources/openapi/model/newWorkoutDto";
 
 @Injectable({
   providedIn: 'root'
@@ -34,5 +35,10 @@ export class WorkoutTemplateService {
   deletetemplate(template: WorkoutTemplateDto){
     this.rest.setEndpoint(Endpoints.workouttemplates, String(template.id));
     return this.rest.doDelete();
+  }
+
+  generateNewWorkout(templateId: string): Observable<NewWorkoutDto>{
+    this.rest.setEndpoint(Endpoints.convertTemplate, templateId);
+    return this.rest.doGet();
   }
 }

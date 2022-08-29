@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
       {label: 'Home', icon: 'pi pi-fw pi-home', routerLink: 'home'},
       {label: 'Beschikbare oefeningen', icon: 'pi pi-fw pi-database', routerLink: 'movements'},
       {label: 'Workout templates', icon: 'pi pi-fw pi-book', routerLink: 'workout-templates'},
-      {label: 'Doe een workout', icon: 'pi pi-fw pi-save'}
+      {label: 'Doe een workout', icon: 'pi pi-fw pi-save', routerLink: 'workout'}
     ];
   }
 

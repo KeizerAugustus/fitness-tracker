@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class WorkoutController implements WorkoutApi {
 
-    private WorkoutService workoutService;
+    private final WorkoutService workoutService;
 
     @Autowired
     public WorkoutController(WorkoutService workoutService){

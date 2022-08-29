@@ -27,6 +27,7 @@ import { CreateTemplateComponent } from './view/workout-template/create-template
 import {OrderListModule} from "primeng/orderlist";
 import {InputNumberModule} from "primeng/inputnumber";
 import {ConfirmationService, MessageService} from "primeng/api";
+import { WorkoutComponent } from './view/workout/workout.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import {ConfirmationService, MessageService} from "primeng/api";
     HomeComponent,
     DisplayTemplatesComponent,
     WorkoutTemplateComponent,
-    CreateTemplateComponent
+    CreateTemplateComponent,
+    WorkoutComponent
   ],
   imports: [
     BrowserModule,

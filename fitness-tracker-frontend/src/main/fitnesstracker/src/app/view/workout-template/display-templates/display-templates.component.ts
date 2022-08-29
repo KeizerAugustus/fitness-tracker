@@ -2,6 +2,8 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {WorkoutTemplateDto} from "../../../../../../../../target/generated-sources/openapi/model/workoutTemplateDto";
 import {ConfirmationService, MenuItem, MessageService} from "primeng/api";
 import {WorkoutTemplateService} from "../../../service/workout-templates/workout-template.service";
+import {Router} from "@angular/router";
+import {WorkoutService} from "../../../service/workout/workout.service";
 
 @Component({
   selector: 'app-display-templates',
@@ -18,7 +20,11 @@ export class DisplayTemplatesComponent {
     {label: 'Verwijder', icon: 'pi pi-file-excel', command: () => {this.verwijderTemplate()}}
   ];
 
-  constructor(private confirmationService: ConfirmationService, private templateService: WorkoutTemplateService, private messageService: MessageService) { }
+  constructor(private confirmationService: ConfirmationService,
+              private templateService: WorkoutTemplateService,
+              private messageService: MessageService,
+              private router: Router,
+              private workoutService: WorkoutService) { }
 
   wijzigTemplate(){
     this.wijzigEvent.emit(this.template);
@@ -54,4 +60,10 @@ export class DisplayTemplatesComponent {
     });
   }
 
+  startNewWorkout(id: number): void {
+    this.templateService.generateNewWorkout(String(id)).subscribe(newWorkoutDto => {
+      this.workoutService.saveWorkoutLocally(newWorkoutDto)
+        .subscribe(() => this.router.navigate(['workout']))
+    })
+  }
 }

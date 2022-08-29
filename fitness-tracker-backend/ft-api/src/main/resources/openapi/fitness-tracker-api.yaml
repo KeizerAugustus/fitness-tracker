@@ -215,7 +215,7 @@ paths:
                 $ref: '#/components/schemas/NewWorkoutDto'
   /workout/finish:
     summary: Finish workout and save cached workout in database
-    get:
+    post:
       operationId: finishWorkout
       responses:
         201:
